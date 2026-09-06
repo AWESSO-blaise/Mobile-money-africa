@@ -59,3 +59,30 @@
 - plt.ylim(min, max) permet de zoomer sur une partie du graphique
 - Nouveau concept : distribution large = valeurs très dispersées
 
+### SMOTE — Rééquilibrage du dataset
+- Problème : 99,87% de transactions normales → modèle biaisé
+- Solution : SMOTE crée des fraudes synthétiques pour équilibrer
+- Avant SMOTE : 5M normales vs 6 593 fraudes
+- Après SMOTE : 5M normales vs 5M fraudes
+- Règle d'or : SMOTE uniquement sur le train, jamais sur le test
+- Sans SMOTE : recall = 0.79 (rate 21% des fraudes)
+- Avec SMOTE : on attend une amélioration du recall
+
+### Sauvegarder un modèle
+- joblib.dump(modele, 'fichier.pkl') → sauvegarde sur le disque
+- joblib.load('fichier.pkl') → recharge sans réentraîner
+- Indispensable pour ne pas réentraîner à chaque fois
+### Évaluation et comparaison des modèles
+
+| Métrique | Sans SMOTE | Avec SMOTE |
+|---|---|---|
+| Precision | 0.97 | 0.64 |
+| Recall | 0.79 | 0.97 |
+| F1-score | 0.87 | 0.77 |
+
+- Recall = % de vraies fraudes détectées
+- Precision = % de bonnes alertes parmi toutes les alertes
+- Fausse alerte = modèle dit fraude mais c'est normal
+- Fraude ratée = modèle dit normal mais c'est une fraude
+- Choix final : modèle SMOTE car mieux vaut bloquer que laisser passer une fraude
+- Contexte africain : fraude = impact grave sur des familles vulnérables
