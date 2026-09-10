@@ -86,3 +86,16 @@
 - Fraude ratée = modèle dit normal mais c'est une fraude
 - Choix final : modèle SMOTE car mieux vaut bloquer que laisser passer une fraude
 - Contexte africain : fraude = impact grave sur des familles vulnérables
+
+### Feature Engineering — résultats
+- Nouvelles features : compte_vide (0/1) et difference_solde (montant)
+- Comparaison des modèles :
+
+| Métrique | SMOTE seul | SMOTE + Features |
+|---|---|---|
+| Precision | 0.64 | 0.67 |
+| Recall | 0.97 | 0.98 |
+| F1-score | 0.77 | 0.80 |
+
+- Conclusion : donner des indices explicites au modèle améliore ses performances
+- Modèle final retenu : modele_final.pkl
