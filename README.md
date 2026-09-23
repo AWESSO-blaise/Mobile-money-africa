@@ -1,6 +1,6 @@
 # Mobile Money Africa — Détection de fraude
 
-Projet personnel de data science : détection automatique de transactions frauduleuses dans le mobile money en Afrique de l'Ouest, à partir d'un dataset réel de 6,3 millions de transactions.
+Projet personnel de data science : détection automatique de transactions frauduleuses à partir du dataset PaySim, un jeu de données simulé de 6,3 millions de transactions inspiré du mobile money, avec un intérêt pour les applications en fintech africaine.
 
 Réalisé dans le cadre de ma spécialisation IA à Junia ISEN Lille, comme projet fil rouge d'apprentissage durant l'été 2026.
 
@@ -10,7 +10,9 @@ Le mobile money est un moyen de paiement massivement utilisé en Afrique de l'Ou
 
 ## Dataset
 
-- 6 362 620 transactions
+PaySim est un simulateur de transactions mobile money créé à des fins de recherche sur la détection de fraude, basé sur des logs réels agrégés puis rendus synthétiques pour la confidentialité. [Source : dépôt officiel PaySim](https://github.com/EdgarLopezPhD/PaySim)
+
+- 6 362 620 transactions simulées
 - 11 colonnes : type, montant, soldes avant/après, indicateur de fraude...
 - Seulement 0,13% de fraudes → dataset fortement déséquilibré
 
