@@ -2,7 +2,7 @@
 
 Projet personnel de data science : détection automatique de transactions frauduleuses dans le mobile money en Afrique de l'Ouest, à partir d'un dataset réel de 6,3 millions de transactions.
 
-Réalisé dans le cadre de ma spécialisation IA à Junia ISEN Lille, comme projet fil rouge d'apprentissage durant l'été 2025.
+Réalisé dans le cadre de ma spécialisation IA à Junia ISEN Lille, comme projet fil rouge d'apprentissage durant l'été 2026.
 
 ## Contexte
 
