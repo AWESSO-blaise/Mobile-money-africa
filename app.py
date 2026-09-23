@@ -20,6 +20,9 @@ solde_apres = st.number_input("Solde après la transaction", min_value=0.0)
 type_transaction = st.selectbox("Type de transaction", 
                                   ["CASH_OUT", "TRANSFER", "PAYMENT", "CASH_IN", "DEBIT"])
 
+# on crée un espace réservé qui sera mis à jour à chaque analyse
+resultat = st.empty()
+
 # on ajoute un bouton pour lancer la prédiction
 if st.button("Analyser la transaction"):
     # on calcule les features dérivées
@@ -33,7 +36,7 @@ if st.button("Analyser la transaction"):
     type_payment = 1 if type_transaction == "PAYMENT" else 0
     type_transfer = 1 if type_transaction == "TRANSFER" else 0
     
-        # on assemble toutes les features dans le bon ordre pour le modèle
+    # on assemble toutes les features dans le bon ordre pour le modèle
     donnees = pd.DataFrame([[montant, solde_avant, solde_apres, 0, 0,
                               type_cash_in, type_cash_out, type_debit, 
                               type_payment, type_transfer,
@@ -44,10 +47,16 @@ if st.button("Analyser la transaction"):
                                      'type_PAYMENT', 'type_TRANSFER',
                                      'compte_vide', 'difference_solde'])
     
-    # on fait la prédiction
+    # on récupère la probabilité de fraude
+    probabilite = modele.predict_proba(donnees)[0][1]
     prediction = modele.predict(donnees)[0]
     
-    if prediction == 1:
-        st.error("⚠️ FRAUDE DÉTECTÉE")
-    else:
-        st.success("✅ Transaction normale")
+    resultat.empty()
+    with resultat.container():
+        st.write(f"Probabilité de fraude : {probabilite:.1%}")
+        st.progress(probabilite)
+        
+        if prediction == 1:
+            st.error("⚠️ FRAUDE DÉTECTÉE")
+        else:
+            st.success("✅ Transaction normale")
